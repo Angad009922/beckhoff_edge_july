@@ -125,7 +125,7 @@ def read_plc_nodes(plc, plc_name):
                       error_code = 0
                 error_code = 0
             except Exception as e:
-                value = None
+        #        value = None
                 error_code = 1
             results_main.append((value, error_code))
         print(f"DEBUG: Bulk read of {len(read_commands_main)} main variables took: {time.time() - bulk_read_main_start_time:.4f} seconds")
@@ -180,7 +180,7 @@ def read_plc_nodes(plc, plc_name):
 
     # === QUEUE_STATUS_UPDATES ===
     queue_data_list = []
-    for i in range(1, 7):  # Only up to 73, matching your nodes_small.txt
+    for i in range(1, 73):  # Only up to 73, matching your nodes_small.txt
         token_no = data.get(f"Request_Queue_Status_{i}_TokenNo")
         if token_no in (None, 0, 9999):
             break
