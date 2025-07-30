@@ -133,7 +133,7 @@ def read_plc_nodes(plc, plc_name):
         # Process results from bulk read
         for i, var in enumerate(PYADS_VARIABLES):
             var_name = var['name']
-            if i < len(results_main): # Ensure index is within bounds
+            if i <= len(results_main): # Ensure index is within bounds
                 value, error_code = results_main[i]
                 if error_code == 0: # ADS error code 0 means success
                     clean_name = var_name.replace(".PLC_To_Server.", "")
@@ -180,7 +180,7 @@ def read_plc_nodes(plc, plc_name):
 
     # === QUEUE_STATUS_UPDATES ===
     queue_data_list = []
-    for i in range(1, 73):  # Only up to 73, matching your nodes_small.txt
+    for i in range(1, 74):  # Only up to 73, matching your nodes_small.txt
         token_no = data.get(f"Request_Queue_Status_{i}_TokenNo")
         if token_no in (None, 0, 9999):
             break
